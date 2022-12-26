@@ -1,6 +1,7 @@
-from app import db
+from app import db, login_manager
 
 from datetime import datetime
+
 
 # Publication table
 class Publication(db.Model):
@@ -13,9 +14,10 @@ class Publication(db.Model):
         self.name = name
 
     def __repr__(self):
-        return 'The Publisher is {}'.format(self.name)
+        return '{}'.format(self.name)
 
-#BOOKS TABLE
+
+# BOOKS TABLE
 class Book(db.Model):
     __tablename__ = 'book'
 
@@ -32,7 +34,6 @@ class Book(db.Model):
     pub_id = db.Column(db.Integer, db.ForeignKey('publication.id'))
 
     def __init__(self, title, author, avg_rating, book_format, image, num_pages, pub_id):
-
         self.title = title
         self.author = author
         self.avg_rating = avg_rating
