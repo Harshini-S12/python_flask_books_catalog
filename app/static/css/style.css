@@ -10,7 +10,7 @@ img{margin: 20px 20px 0px 0px;}
 .books { padding: 25px; position: relative; left: 5%; width: 80% ;  }
 .publisher { padding: 25px; position: relative; left: 40px }
 .ftr { padding: 25px }
-.wrapper { position: relative; min-height: 100% }
+.wrapper { position: relative; min-height: 105% }
 
 
 .form { height: 50%; width:70%; padding: 10px; position: relative; left: 30px }
