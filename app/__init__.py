@@ -17,10 +17,11 @@ bcrypt = Bcrypt()
 
 # dev,test, prod
 
-def create_app(config_filename=None):
+def create_app(config_type):
     app = Flask(__name__)
-    config_type = os.getenv('CONFIG_TYPE', default='config.DevelopmentConfig')
-    app.config.from_object(config_type)
+    configuration = os.path.join(os.getcwd(), 'config', config_type + '.py')
+    # 'C:\\Users\\Admin\\PycharmProjects\\book_catalog\\config\\dev.py'
+    app.config.from_pyfile(configuration)
 
     db.init_app(app)  # binds db to flask app
     bootstrap.init_app(app)  # initializes bootstrap
@@ -33,7 +34,3 @@ def create_app(config_filename=None):
     app.register_blueprint(at)  # registering blueprint
 
     return app
-
-
-
-
