@@ -2,7 +2,7 @@ from sqlalchemy import exc
 
 from app import create_app,db
 from app.auth.models import User
-from app.catalog import Book, Publication
+from app.catalog.models import Book, Publication
 
 flask_app = create_app('prod')
 with flask_app.app_context():
