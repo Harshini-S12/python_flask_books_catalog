@@ -7,7 +7,7 @@ from app.catalog import main
 from app import db
 from app.catalog.models import Book, Publication
 from flask import render_template, flash, redirect, url_for, request
-from app.catalog.forms import EditBookForm, CreateBookForm
+from app.catalog.forms import EditBookForm, CreateBookForm, CreatePublisherForm
 
 ROWS_PER_PAGE =6
 # main -- blueprint
@@ -71,3 +71,20 @@ def create_book(pub_id):
 
         return redirect(url_for('main.display_publisher', publisher_id = pub_id))
     return render_template('create_book.html', form=form,pub_id=pub_id)
+
+
+@main.route('/create/publisher/', methods =['GET', 'POST'])
+@login_required
+def create_publisher():
+    form = CreatePublisherForm()
+
+
+    if form.validate_on_submit():
+        publisher = Publication(name=form.name.data)
+        db.session.add(publisher)
+        db.session.commit()
+        flash('Publisher Added Successfully')
+
+        return redirect(url_for('main.display_publisher', publisher_id = form.id.data))
+    return render_template('createpublisher.html', form=form)
+

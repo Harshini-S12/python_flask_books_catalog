@@ -2,9 +2,9 @@ from sqlalchemy import exc
 
 from app import create_app,db
 from app.auth.models import User
-from app.catalog.models import Book, Publication
 
-flask_app = create_app('prod')
+
+flask_app = create_app('dev')
 with flask_app.app_context():
 
     db.create_all()

@@ -32,9 +32,12 @@
                     <li><a href="{{url_for('authentication.register_user')}}"> Register </a></li>
                     <li>{% if  current_user.is_authenticated%}
                         <a href="{{url_for('authentication.log_out_user')}}"> Sign Out </a></li>
+
                     {% else %}
                     <a href="{{url_for('authentication.do_the_login')}}">SignIn</a>
                     {% endif%}
+                    <li><a href="{{url_for('main.create_publisher')}}"> Add Publisher </a></li>
+                     <li><a href="{{url_for('main.create_book',pub_id=1)}}"> Add Book </a></li>
                     <li><a href="">
                         {%if current_user.is_authenticated%}
                         Logged In as <b style="color: deeppink">{{current_user.user_name.title()}}</b>
